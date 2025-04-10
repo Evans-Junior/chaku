@@ -19,7 +19,7 @@ body {
   padding: 1rem 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
-  z-index: 1;
+  z-index: 1000000;
   width: 100%;
 }
 
@@ -185,6 +185,7 @@ gap: 30px;
   font-size: 20px;
   white-space: nowrap; /* Prevents text from wrapping */
   flex: 1; /* label takes one portion of the row */
+  font-weight: 30;
 
 }
 
