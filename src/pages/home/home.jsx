@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import FullScreenDisplay from "../components/FullScreenDisplay";
-import bgImage from "../assets/1.jpg";
+import Navbar from "../../components/Navbar";
+import FullScreenDisplay from "../../components/FullScreenDisplay";
+import bgImage from "../../assets/1.jpg"; // Ensure this path is correct
 import { useNavigate } from "react-router-dom";
+import "./home.css"; // Create this file for loading animation styles
 
 const initialFormData = {
   name: "",
@@ -28,6 +29,7 @@ const Home = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -79,7 +81,12 @@ const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
-    navigate("/results", { state: formData });
+    setIsLoading(true);
+
+    setTimeout(() => {
+      navigate("/results", { state: formData });
+      setIsLoading(false);
+    }, 2000);
     setFormData(initialFormData);
   };
 
